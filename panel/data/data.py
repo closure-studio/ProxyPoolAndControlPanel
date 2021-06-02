@@ -48,17 +48,17 @@ class nodeData():
 
 
     def readFile(self):
-        RootData.load()
+        RootData.load(path='panel/config/Root.DataStore')
         self.nodeList = RootData.get("nodeList")
         if self.nodeList == None:
             self.nodeList = {}
             RootData.set("nodeList", self.nodeList)
-            RootData.dump()
+            RootData.dump(save_path='panel/config/Root.DataStore')
         return
 
     def saveFile(self):
         RootData.set("nodeList", self.nodeList)
-        RootData.dump()
+        RootData.dump(save_path='panel/config/Root.DataStore')
 
     def setIndex(self,node : nodeRegister):
         index = 0

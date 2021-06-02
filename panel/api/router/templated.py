@@ -9,7 +9,6 @@ class nodeRegister(BaseModel):
     publicAddress : str
     port : str
     auth : str
-    domain : Optional[str] = None
     ID : Optional[int] = None
     status : Optional[int] = None
     lastUpdate : Optional[str] = None

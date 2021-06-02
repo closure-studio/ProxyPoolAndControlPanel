@@ -5,15 +5,10 @@ from panel.api import app
 
 
 
-def init():
-    RootData.load()
-
-
-
 
 
 if __name__ == '__main__':
-    RootData.load()
+
     uvicorn.run(app,
                 host="0.0.0.0",
                 port=3000,

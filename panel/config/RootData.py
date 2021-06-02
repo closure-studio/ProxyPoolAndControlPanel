@@ -70,7 +70,7 @@ class RootData:
         return RootData.get(item, default)
 
     @staticmethod
-    def dump(save_path: str = './config/Root.DataStore', keep_field: list = None, drop_field: list = None, show=False):
+    def dump(save_path: str = 'Root.DataStore', keep_field: list = None, drop_field: list = None, show=False):
         try:
             import pickle
         except ImportError:
@@ -98,7 +98,7 @@ class RootData:
 
 
     @staticmethod
-    def load(path: str = './config/Root.DataStore', *fields):
+    def load(path: str = 'Root.DataStore', *fields):
         if os.path.exists(path):
             try:
                 import pickle
