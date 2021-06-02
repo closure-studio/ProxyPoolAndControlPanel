@@ -49,7 +49,7 @@ class Config():
             r = input(f'节点名称 {nodeName} 按任意键进行确认 n 键进行重新输入 \n')
             if r.lower() == 'n':
                 continue
-            self.info["nodeName"] = nodeName
+            self.info["name"] = nodeName
             return
 
     def isIPvaild(self) -> None:
@@ -83,6 +83,8 @@ class Config():
         if 'ID' in self.info.keys():
             data['ID'] = self.info['ID']
         r = requests.post("http://ak-proxypool-panel.nai-ve.com/node/nodeRegister",json=data)
+        print(r.text)
+        print(r.status_code)
         if r.status_code == 200:
             self.info = json.loads(r.text)["data"]
             RootData.set('info',self.info)
