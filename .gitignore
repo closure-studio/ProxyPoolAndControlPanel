@@ -127,3 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+/panel/config/Root.DataStore
+/client/config/Root.DataStore

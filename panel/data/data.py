@@ -19,9 +19,10 @@ class nodeData():
     def healthCheck(self) -> None:
         while True:
             time.sleep(30)
-            for _,node in enumerate(self.nodeList):
+            for i,key in enumerate(self.nodeList):
+                node = self.nodeList[key]
                 nodeCheck = threading.Thread(target=self.nodeCheck,args=(node,))
-                nodeCheck.name = f"nodecheck : {node.ID}"
+                nodeCheck.name = str(f"nodecheck : {node.ID}")
                 nodeCheck.start()
 
     def nodeCheck(self,node:nodeRegister) ->None:
@@ -34,12 +35,17 @@ class nodeData():
         proxies = {
         'https': ulr
         }
-        r = requests.get('https://www.google.com', proxies=proxies)
-        if r.status_code == 200:
-            self.nodeList[node.ID].status = 0
+        try:
+            r = requests.get('https://www.google.com', proxies=proxies)
             self.nodeList[node.ID].lastUpdate = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-        if r.status_code != 200:
+            if r.status_code == 200:
+                self.nodeList[node.ID].status = 0
+            if r.status_code != 200:
+                self.nodeList[node.ID].status = 1
+        except Exception as e:
+            self.nodeList[node.ID].lastUpdate = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
             self.nodeList[node.ID].status = 1
+
 
     def readFile(self):
         RootData.load()
@@ -57,12 +63,15 @@ class nodeData():
     def setIndex(self,node : nodeRegister):
         index = 0
         indexList = [key for key in self.nodeList.keys()]
+        if node.ID is not None:
+            return
         if node.ID is None:
-            for i in indexList:
-                if index != i:
-                    node.ID = index
-                    return
-
+            while True:
+                if index in indexList:
+                    index+=1
+                    continue
+                node.ID = index
+                return
     def nodeApend(self,node : nodeRegister) ->None:
         self.setIndex(node)
         self.nodeList[node.ID] = node

@@ -23,9 +23,9 @@ async def getNodes(node:getNodes):
     return resp_ok(data=data,message = "所有节点")
 
 
-@router.post("/getNodes",summary="获取所有节点")
+@router.post("/delNodeByIndex",summary="删除节点")
 async def delNodeByIndex(node:delNode):
     if node.auth != "kMJIK5EyrMCJAd9sftcxf0DnJ3winqtj":
         return Exception_401()
-    data = nodeDel()
-    return resp_ok(data=data,message = "所有节点")
+    data = nodeDel(node)
+    return resp_ok(data=data,message = "删除节点")
