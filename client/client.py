@@ -68,7 +68,7 @@ class Config():
             print(f"当前 端口 地址 为 {str(prot)} \n")
             result = input(f"输入任意键 进行 确认 输入 N 进行 人工指定 \n")
             if result.lower() == 'n':
-                port = input("请输入IP地址 \n")
+                port = input("请输入port地址 \n")
                 self.info["port"] = port
                 continue
             return
@@ -82,7 +82,7 @@ class Config():
         }
         if 'ID' in self.info.keys():
             data['ID'] = self.info['ID']
-        r = requests.post("http://ak-proxypool-panel.nai-ve.com/node/nodeRegister",json=data)
+        r = requests.post("https://ak-proxypool-panel.nai-ve.com/node/nodeRegister",json=data)
         print(r.text)
         print(r.status_code)
         if r.status_code == 200:
