@@ -1,6 +1,5 @@
 
 import uvicorn
-from panel.config.RootData import RootData
 from panel.api import app
 
 if __name__ == '__main__':
