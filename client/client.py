@@ -82,7 +82,7 @@ class Config():
         }
         if 'ID' in self.info.keys():
             data['ID'] = self.info['ID']
-        r = requests.post("http://34.123.224.81:8000/node/nodeRegister",json=data)
+        r = requests.post("http://ak-proxypool-panel.nai-ve.com/node/nodeRegister",json=data)
         if r.status_code == 200:
             self.info = json.loads(r.text)["data"]
             RootData.set('info',self.info)
