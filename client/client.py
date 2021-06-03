@@ -46,7 +46,7 @@ class Config():
     def setNodeName(self) -> None:
         while True:
             nodeName = input("请输入您的节点名称 \n")
-            r = input(f'节点名称 {nodeName} 按任意键进行确认 n 键进行重新输入 \n')
+            r = input(f'节点名称 {nodeName} 按任意键进行确认 n 键进行重新输入')
             if r.lower() == 'n':
                 continue
             self.info["name"] = nodeName
@@ -56,7 +56,7 @@ class Config():
         while True:
             ip = self.info["publicAddress"]
             print(f"当前 IP 地址 为 {ip} \n")
-            result = input(f"输入任意键 进行 确认 输入 N 进行 人工指定 \n")
+            result = input(f"输入任意键 进行 确认 输入 N 进行 人工指定")
             if result.lower() == 'n':
                 self.info["publicAddress"] = input("请输入IP地址 \n")
                 continue
@@ -66,7 +66,7 @@ class Config():
         while True:
             prot = self.info["port"]
             print(f"当前 端口 地址 为 {str(prot)} \n")
-            result = input(f"输入任意键 进行 确认 输入 N 进行 人工指定 \n")
+            result = input(f"输入任意键 进行 确认 输入 N 进行 人工指定")
             if result.lower() == 'n':
                 port = input("请输入port地址 \n")
                 self.info["port"] = port
